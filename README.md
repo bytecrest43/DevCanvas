@@ -1,12 +1,8 @@
-<p align="center">
-  <img src="/public/devlogo.png" alt="DevCanvas" width="180" />
-</p>
+![DevCanvas](/public/devlogo.png)
 
-<h1 align="center">DevCanvas</h1>
+# DevCanvas
 
-<p align="center">
-  A real-time collaborative workspace for designing software systems — describe your architecture in plain English, and watch it come to life on a shared canvas.
-</p>
+A real-time collaborative workspace for designing software systems — describe your architecture in plain English, and watch it come to life on a shared canvas.
 
 ---
 
@@ -16,7 +12,7 @@ DevCanvas turns natural language into system architecture diagrams. A team descr
 
 **Core loop:**
 
-```
+```text
 Describe system → AI generates nodes/edges → Collaborators refine → Export Markdown spec
 ```
 
@@ -81,7 +77,7 @@ Describe system → AI generates nodes/edges → Collaborators refine → Export
 ## Tech Stack
 
 | Layer | Technology | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Framework | Next.js 16 + TypeScript | Full-stack app with server/client boundaries |
 | UI | Tailwind CSS + shadcn/ui | Component composition and styling |
 | Auth | Clerk | User identity and route protection |
@@ -96,7 +92,7 @@ Describe system → AI generates nodes/edges → Collaborators refine → Export
 
 ### System Boundaries
 
-```
+```text
 app/api/        → Authenticated request handlers (validation, ownership, task triggering)
 trigger/        → Long-running background jobs (AI generation, spec generation)
 lib/            → Shared infrastructure (Prisma client, access control, utilities)
@@ -108,7 +104,7 @@ data/           → Legacy local directory (not used for new artifacts)
 ### Storage Model
 
 | What | Where | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Project metadata, ownership, relationships | PostgreSQL via Prisma | First-class relational data |
 | Canvas snapshots (`canvas/{projectId}.json`) | Vercel Blob | User-created canvas state |
 | Generated specs (`specs/{projectId}/{specId}.md`) | Vercel Blob | Generated artifacts |
@@ -119,7 +115,7 @@ data/           → Legacy local directory (not used for new artifacts)
 
 ### AI Generation Flows
 
-#### Design Generation
+#### AI Design Generation
 
 1. User submits natural language prompt in editor
 2. API route validates input and membership
@@ -129,7 +125,7 @@ data/           → Legacy local directory (not used for new artifacts)
 6. Updates written directly to shared Liveblocks room
 7. All collaborators see changes in real time
 
-#### Spec Generation
+#### Markdown Spec Generation
 
 1. User triggers spec generation from completed design
 2. API route captures current canvas graph
@@ -150,7 +146,7 @@ data/           → Legacy local directory (not used for new artifacts)
 - **Room Access:** Liveblocks room tokens issued only after verified membership
 - **Enforcement:** Auth and ownership checks at every mutation boundary
 
-### Starter System Designs
+### Starter System Designs Configuration
 
 - **Storage:** Prebuilt templates stored as static canvas snapshots in the codebase
 - **Import:** Loaded into Liveblocks room when user imports template
@@ -171,7 +167,7 @@ All colors are defined as CSS custom properties in `globals.css` and mapped to T
 ### Color Palette
 
 | Role | CSS Variable | OKLch / Hex Value |
-|---|---|---|
+| --- | --- | --- |
 | Page background | `--bg-base` | `#020509` (deep void) |
 | Surface | `--bg-surface-mid` | `oklch(10% 0.020 222)` |
 | Elevated surface | `--bg-elevated-mid` | `oklch(14% 0.024 222)` |
@@ -193,7 +189,7 @@ All colors are defined as CSS custom properties in `globals.css` and mapped to T
 ### Typography
 
 | Role | Font | CSS Variable |
-|---|---|---|
+| --- | --- | --- |
 | UI text | Geist Sans | `--font-geist-sans` |
 | Code / mono | Geist Mono | `--font-geist-mono` |
 
@@ -204,7 +200,7 @@ Both fonts loaded via `next/font/google` and applied as CSS variables on `<html>
 Radius increases with surface depth — smaller for inner elements, larger for outer containers.
 
 | Context | Class |
-|---|---|
+| --- | --- |
 | Inline / small UI | `rounded-xl` |
 | Cards / panels | `rounded-2xl` |
 | Modals / overlays | `rounded-3xl` |
@@ -216,7 +212,7 @@ Radius increases with surface depth — smaller for inner elements, larger for o
 8 defined color pairs. Each specifies a dark node fill and vivid contrasting text tuned for readability on the dark canvas.
 
 | Node Fill | Text Color | Character |
-|---|---|---|
+| --- | --- | --- |
 | `#1F1F1F` | `#EDEDED` | Neutral dark (default) |
 | `#10233D` | `#52A8FF` | Blue |
 | `#2E1938` | `#BF7AF0` | Purple |
@@ -262,7 +258,7 @@ shadcn/ui on top of Tailwind. No custom design system. Components live in `compo
 ### Layout Patterns
 
 | Pattern | Structure |
-|---|---|
+| --- | --- |
 | **Editor workspace** | Full viewport: left floating sidebar overlay, center canvas, right slide-over AI sidebar |
 | **Sidebars** | Floating overlay with dark semi-transparent background and subtle border |
 | **Modals & dialogs** | Centered overlay, `rounded-3xl`, dark background with backdrop blur |
@@ -273,7 +269,7 @@ shadcn/ui on top of Tailwind. No custom design system. Components live in `compo
 Lucide React. Stroke-based icons only — no filled variants.
 
 | Context | Size |
-|---|---|
+| --- | --- |
 | Inline | `h-4 w-4` |
 | Buttons | `h-5 w-5` |
 | Feature icons | `h-8 w-8` |
