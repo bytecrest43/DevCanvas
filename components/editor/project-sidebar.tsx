@@ -30,11 +30,14 @@ export function ProjectSidebar({
 }: ProjectSidebarProps) {
   return (
     <aside
+      inert={!isOpen || undefined}
       aria-hidden={!isOpen}
       inert={!isOpen ? "" : undefined}
       className={cn(
         "fixed bottom-4 left-4 top-16 z-40 flex w-[min(22rem,calc(100vw-2rem))] flex-col rounded-2xl border border-surface-border bg-surface/90 p-4 shadow-2xl backdrop-blur-xl transition-transform duration-200 ease-out",
-        isOpen ? "translate-x-0" : "-translate-x-[calc(100%+2rem)]",
+        isOpen
+          ? "translate-x-0"
+          : "-translate-x-[calc(100%+2rem)] pointer-events-none invisible",
         className
       )}
     >

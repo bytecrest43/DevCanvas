@@ -49,3 +49,4 @@ Update this file whenever the current phase, active feature, or implementation s
 - Correcting route structure so the editor layout applies only to `/editor`, while `/` remains a home page without the editor navbar/sidebar.
 - Added standalone home UI at `/` and moved the editor layout/page into the `/editor` segment.
 - Replaced the home logo `img` with `next/image` after reading the local Next.js image optimization guide, then verified with `npm run lint` and `npm run build`; both passed.
+- Verified PR a11y finding in `components/ui/dialog.tsx`; marked the dialog close `XIcon` decorative because the button already exposes `Close` via sr-only text.
